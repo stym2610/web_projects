@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="webpage.css" type="text/css">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <ul class="nav" id="dropdownclick">
+          <li><a href="#home"> home </a></li>
+          <li><a href="#news"> news </a></li>
+          <li><a href="#contact"> contact </a></li>
+          <li><a href="#about"> about </a></li>
+          <li class="nav-right"><a href="#sign in"> sign in </a></li>
+          <li class="nav-right"><a href="#sign up"> sign up </a></li>
+          <li class="dropdown" onclick="dropdownmenu()"><a href="javascript:void(0);">&#9776;</a></li>
+        </ul>
+    </nav>
+
+    <div class="container" id="gradient">
+       <div class="row">
+           <div class="col-6">
+                <div class="left-col">
+                    <h1 class="large">Crazy Radness</h1>
+                    <h1 class="large">Made for Devslopers</h1>
+                </div>
+                
+                    <form>
+                       <div class="left-col">
+                        <h2>Username</h2>
+                        <input class="inputbox" name=Username type="text" placeholder="Username">
+                        <h2>Password</h2>
+                        <input class="inputbox" name="Password" type="text" placeholder="Password">
+                       </div> 
+                    </form>
+           </div>
+           <div class="col-6">
+                <div class="right-col">
+                    <div class="iframecontainer">
+                    <iframe width="480" height="300" src="https://www.youtube.com/embed/rYeSA1vgIUE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+
+    <header>
+        <h1 class="headerh1">The Standards of awesomenessss</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-4">
+                <div class="box">
+                    <div class="icon">
+                        <img src="devicon.jpg">
+                    </div>
+                    <label class="box-label">
+                        Chat with Me
+                    </label>
+                    <p>
+                        we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us..
+                    </p>
+                </div>
+
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <div class="icon">
+                        <img src="devicon.jpg">
+                    </div>
+                    <label class="box-label">
+                        Learn to Code
+                    </label>
+                    <p>
+                        we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us..
+                    </p>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="box">
+                    <div class="icon">
+                        <img src="devicon.jpg">
+                    </div>
+                    <label class="box-label">
+                        Build an Empire
+                    </label>
+                    <p>
+                        we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us..
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <button class="learnMore">
+                   Learn More
+                </button>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <article>
+                    <p>
+                        we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us.. we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us.. we are here to help you in any situation.. 
+                        so to make you  perfect in development skill you can take our help 
+                        anytime .. so do contact us..
+                    </p>
+                </article>
+            </div>
+            <div class="col-5">
+                <div class="imageholder">
+                    <img src="IosIcon.jpg" alt="imageNotLoading">
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="foot">
+        <div class="row">
+            <div class="col-3 mobilefoot">
+                <h1>Company</h1>
+                <ul>
+                    <li>About</li>
+                    <li>Blogs</li>
+                    <li>career</li>
+                </ul>
+            </div>
+            <div class="col-3 mobilefoot" >
+                <h1>Company</h1>
+                <ul>
+                    <li>About</li>
+                    <li>Blogs</li>
+                    <li>career</li>
+                </ul>
+            </div>
+            <div class="col-3 mobilefoot">
+                <h1>Company</h1>
+                <ul>
+                    <li>About</li>
+                    <li>Blogs</li>
+                    <li>career</li>
+                </ul>
+            </div>
+            <div class="col-3 mobilefoot">
+                <h1>Company</h1>
+                <ul>
+                    <li>About</li>
+                    <li>Blogs</li>
+                    <li>career</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <script>
+    function dropdownmenu() {
+        var x = document.getElementById("dropdownclick");
+        if(x.className === "nav"){
+            x.className += " responsive";
+            /*change class name to "nav responsive"*/
+        } else {
+            x.className = "nav";
+        }
+    }
+    </script>
+
+</body>
+</html>

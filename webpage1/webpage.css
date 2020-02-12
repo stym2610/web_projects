@@ -1,0 +1,291 @@
+ nav,
+ header,
+ footer {
+     display : block;
+ }
+
+ body {
+    line-height: 1;
+    margin: 0;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+
+.row::after {
+    display: table;
+    clear: both;
+    content:"";
+
+}
+
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.33%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+ 
+/*######## nav bar #########*/
+
+
+nav {
+    width: 100%;
+    margin: 0;
+}
+
+nav ul {
+    background-color: #eee;
+    overflow: hidden;
+    margin : 0;
+    list-style-type: none;
+    padding: 0;
+}
+
+ ul.nav li {
+    float: left;
+}
+
+ul.nav li.nav-right {
+    float : right;
+}
+
+ul.nav li a {
+    display: block;
+    text-decoration: none;
+    min-height: 20px;
+    padding: 14px;
+    text-transform: uppercase;
+    text-align: center;
+    color : rgb(201, 116, 116);
+}
+
+ul.nav li a:hover {
+    background-color: powderblue;
+    color : white;
+    transition: .4s;
+}
+
+ul.nav li.dropdown {
+    display: none;
+}
+
+/*############ section 2 ############*/
+
+#gradient {
+    background: linear-gradient(#076DFF,#65a5ff);
+}
+
+div.left-col {
+    margin-left: 30%;
+}
+
+div.container {
+    width: 100%;
+    margin: auto;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+h1.large {
+    font-size: 45px;
+    color: white;
+    margin: 0;
+    line-height: 60px;
+}
+
+form h2 {
+    color: white;
+}
+
+input[type="text"] {
+    font-size: 15px;
+    width: 300px;
+    padding: 4px;
+    min-width: 100px;
+    border-radius: 7px;
+}
+
+/* ############ section 3 ########### */
+
+h1.headerh1 {
+    font-size: 50px;
+    text-align: center;
+}
+
+div.box {
+    background-color:white;
+    box-shadow: 0 0 0 1px  rgba(0, 0, 0, 0.15)
+    ,1px 2px 3px  0px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+    margin: 20px;
+    padding: 35px 24px 40px 24px;
+    border-radius: 7px;   
+}
+
+div.icon{
+    width: 100%;
+}
+
+div.box div.icon img{
+    width: 80px;
+    height: 80px;
+}
+
+div.box label.box-label {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+button {
+    font-size: 32px;
+    color: white;
+    background-color: #0069ff;
+    font-weight: 700;
+    border-color: #0069ff;
+    border: none;
+    border-radius: 7px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    padding: 15px 40px;
+    cursor: pointer;
+}
+
+button:hover{
+    box-shadow: -1px -1px 3px 1px  rgba(0, 0, 0, 0.5)
+    ,1px 1px 3px  1px rgba(0, 0, 0, 0.5);;
+}
+
+/*############ section 4 ###########*/
+
+article p {
+    font-size: 23px;
+    padding: 15px;
+    font-weight: 500;
+}
+
+div.imageholder img{
+    display: block;
+    width: 400px;
+    height: 250px;
+    margin: auto;
+    box-shadow: -2px -2px 10px 2px rgba(0,0,0,.15),
+    2px 2px 8px 2px rgba(0, 0, 0, .7);
+}
+
+/* ############# footer section ############# */
+
+footer.foot {
+    background-color: #666;
+    padding-left: 10%;
+}
+
+footer.foot h1 {
+    color : white;
+}
+
+footer.foot ul{
+    padding: 0;
+    list-style: none;
+    text-align: left;
+}
+
+footer.foot ul li {
+    font-size: 20px;
+    color: white;
+    font-weight: 600;
+}
+
+
+
+
+/*######### mobile responsive #########*/
+
+@media (max-width : 510px){
+    
+    /* ############ header nav ############ */
+
+    ul.nav li:not(:nth-child(1)) {
+        display : none;
+    }
+
+    ul.nav li.dropdown {
+        display : block;
+        float : right;
+    }
+
+    ul.nav.responsive li.dropdown {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+     
+     ul.nav.responsive {
+        position: relative;
+    }
+    
+    ul.nav.responsive li {
+        display : inline;
+        float : none;
+    }
+
+    ul.nav.responsive li a {
+        display : block;
+        text-align: left;
+    }
+
+    /* ########### section 2 ########### */
+
+    .col-6, .col-4, .col-7, .col-5  {                  /*section 3*/
+        width: 100%;
+        margin : 0;
+    }
+
+    div.left-col ,
+    div.right-col {
+        margin : 15px;
+    }
+
+    div.iframecontainer iframe {
+        position: relative;           /*no effect*/
+        width: 100%; 
+        margin: 0;
+        overflow: hidden;             /*no effect*/
+    }
+
+    /* ########## section 3 ######### */
+    
+    div.box {
+        padding: 5px;
+        display: block;                /*no-effect*/
+    }
+
+    div.imageholder img {
+        width: 100%;
+    }
+    article p  {
+        font-size: 20px;
+    }
+
+    div.imageholder {
+        margin: 10px;
+    }
+
+    /* ############ footer section ########### */
+
+    div.mobilefoot {
+        width: 50%;  
+    }
+}
+

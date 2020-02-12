@@ -1,0 +1,49 @@
+ /* body{
+    display: flex;
+}  */
+table{
+    background-color: rgb(48, 46, 46);
+    border-collapse: collapse;
+    width: 300px;
+    height: 500px;
+    color:white;
+    position: relative;
+}  
+td{
+   font-size: 50px;
+   text-align: center;
+}
+.x{
+   border-right: 3px solid gray;
+} 
+input{
+    width : 294px;
+    height: 100px;
+    background-color: gray;
+    text-align: right;
+    border: solid grey;
+    font-size: 400%;
+}
+.op{
+    color: rgb(81, 91, 175);
+}
+.calc{
+    width: 50%;
+}
+.text{
+    width: 50%;
+    font-size: 50px;
+    vertical-align: middle;   
+}
+
+button {
+    font-size: 40px;
+    background-color: rgb(48, 46, 46);
+    border : 0;
+    color: white;
+    cursor: pointer;
+}
+
+button.op {
+    color: black;
+}
