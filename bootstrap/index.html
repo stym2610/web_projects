@@ -10,17 +10,38 @@
     <link rel="stylesheet" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css" >
     <link rel="stylesheet" href="style.css" >
   </head>
-  <body>
-    
-      <div class="row">
-        <div class="col-sm-6">col 1</div>
-        <div class="col-sm-6">col 2</div>
-      </div>
-      <div class="row">
-          <div class=" col-sm-4">col 3</div>
-          <div class=" col-sm-4">col 4</div>
-          <div class=" col-sm-4">col 5</div>
-      </div>
+  <body class="signin-body">
+       <div class="container signin-container">
+          <div class="row">
+            <div class="col">
+            </div>
+            <div class="col-sm-12 col-md-8">
+                <div class="card signin-card">
+                    <div class="card-block">
+                      <img src="devIcon.png" alt="NOT LOADING!!" class="img-fluid signin-img">
+                    </div>
+                    <form class="form">
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                        </div>
+                        <button type="button" class="btn signin-btn btn-lg">Primary</button>
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input"> Remember me <a href="#">Need help?</a>
+                          </label>
+                        </div>
+                    </form>
+                </div>
+                <a href="#" class="create-new-account">Create New Account</a>
+            </div>
+            <div class="col">
+
+            </div>
+          </div>
+       </div>
     
 
     <!-- jQuery first, then Tether, then Bootstrap JS. -->
