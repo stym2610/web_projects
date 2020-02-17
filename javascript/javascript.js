@@ -79,6 +79,10 @@
     //  //var realcar = callcarlater.bind(hyundai);                               //to bind object....!!!!
     //  console.log(callcarlater());
 
+    // var rs = require('readline-sync') ;
+    // var name = rs.question('what is ur name?'); // to take input
+
+    /* */
     
 
 
