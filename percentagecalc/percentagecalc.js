@@ -12,5 +12,4 @@ click.addEventListener('submit' , function(event){
         text.innerText = "Answer : " + percent + "%";
         event.preventDefault();
     }
-    
 });

@@ -11,12 +11,12 @@ var incredients = [
 
     {
         "id":"121dd",
-        "text":"biscut"
+        "text":"banana"
     },
 
     {
         "id":"02011",
-        "text":"namkeen"
+        "text":"butter"
     }
 ];
 

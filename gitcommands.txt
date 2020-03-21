@@ -1,0 +1,73 @@
+################## general git commands ##################
+git pull origin master --allow-unrelated-histories ## to merge forcefully
+git remote -v ## to check repository
+git remote add origin(set name of  repository) https link of repo ## establish connection btw local and remote repo
+git add -A ## mark all changes
+git commit -m ## to commit changes
+git pull origin(name of repo) master(branch from where to pull)  ## to pull changes
+git push origin master ## to push changes
+vim file_name ## to edit file
+escape escape : x ## to exit from vim editer
+git status ## to check status of files
+ssh-keygen -t rsa paste-email-here ## used to create ssh key  
+git log ## to check commits
+git checkout comiit/branch-to-check  ## to check any branch or commit
+ls -al ~/.ssh ## to check existing ssh key
+ssh -i private_key_name(id_rsa) root@id_address  ##to connect with serverb
+cat ~/.ssh/id_rsa.pub ## to copy ssh keys
+
+
+
+########################### commands to install nginx ##############################
+apt update
+apt install nginx
+ufw app list ## app list will be shown
+ufw allow 'Nginx HTTP'
+systemctl status nginx ## to check status
+
+
+################### to connect server with github ######################
+git clone http-url-of-repo ## to connect with repo of  git to server and automatically data is added
+
+################## to up the server ################
+** cd/var/www/ ## pull project here
+** cd/etc/nginx/sites-available ## create a file to launch
+** vim file-name ## edit file and paste the content below 
+server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/name-of-project-pulled-from-github;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name ip_address ip_address;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+## a project will be created to sites-available
+** ln -s /etc/nginx/sites-available/name_of_file_created_in-sites-available /etc/nginx/sites-enabled/ ## to copy file from sites-available to sites-enabled so it can be launched
+** systemctl restart nginx ## to restart nginx
+
+
+############ node commands ##############
+**npm install package_name ##to install package
+**npm install --save package_name ## to save package permanently in json file
+By npm install automatically packages will be installed written in json file
+** npm install -g package_name ## -g installs package globally not in a particular folder 
+
+############## to run mongodb #############
+mongod --dbpath data/db ## to run mongo server 
+mongo ## to enter mongo shell ## from another terminal 
+show dbs ## to show created databases
+use name_if_database ## to enter in a database ##to create if not created 
+db.name_of_item.insert({write json here}) ## to create documents in database
+show collections ## show your entities
+db.name_of_item.find() ## show you content within 
+
+
+
+
+
+
