@@ -5,17 +5,17 @@ app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended : false}));
 var incredients = [
     {
-        "id":"22rr3",
+        "id":"a1",
         "text":"milk"
     },
 
     {
-        "id":"121dd",
+        "id":"a2",
         "text":"banana"
     },
 
     {
-        "id":"02011",
+        "id":"a3",
         "text":"butter"
     }
 ];
@@ -75,6 +75,6 @@ app.delete('/:incredientId', function(request , response){
     }
 });
 
- app.listen(3000, function(){
-        console.log("my first API running at port 3000..!!");
+ app.listen(3001, function(){
+        console.log("my first API running at port 3001..!!");
  });
