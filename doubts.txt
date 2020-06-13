@@ -1,0 +1,7 @@
+1. Dependency Injection
+2. Unit tests
+3. Injectable {Decorator}
+4. assignment 3 needs to be done!!!!!!
+5. <input ngModel name="firstName" #firstName="ngModel" type="text" id="firstName" class="form-control" (click)="log(firstName)">
+..... ngModel? working of name attribute? full syntax?
+6. template driven forms and reactive forms

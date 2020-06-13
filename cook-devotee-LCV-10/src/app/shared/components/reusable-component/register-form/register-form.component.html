@@ -1,0 +1,328 @@
+
+<div *ngIf="Label">
+    <form class="pd-10 register-ui" [formGroup]="cookRegistrationForm">
+        <div class="form-row">
+          <div *ngIf="state.name" class="form-group required col-md-6">
+            <label for="">{{state.url === 'cook' || state.url === 'edit-cook' || state.url === 'cookByDevotee' ? 'Cook Name' : 'Devotee Name'}}</label>
+            <input type="text" class="form-control" id="" placeholder="" formControlName="name">
+            <div *ngIf="(form.name.invalid && (form.name.dirty || form.name.touched)) || isSubmit" class="text-danger">
+              <div *ngIf="form.name.errors?.required">
+                {{RegistrationMessage.name}}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="state.password" class="form-group required col-md-6">
+            <label for="inputPassword4">{{Label.password}}</label>
+            <input type="password" [readonly]="(state.password === 'disable')?true:false" class="form-control" id="inputPassword4" formControlName="password" placeholder="Password">
+            <div *ngIf="(form.password.invalid && (form.password.dirty || form.password.touched)) || isSubmit" class="text-danger">
+              <div *ngIf="form.password.errors?.required">
+                {{RegistrationMessage.password}}
+              </div>
+               <div *ngIf="form.password.errors?.pattern">
+                {{RegistrationMessage.strong_password}}
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <ng-container>
+              <app-email-verification [state] = "state" [emailForm] = "cookRegistrationForm" (response) = "getEmailState($event)"></app-email-verification>
+            </ng-container>
+          </div>
+          <div class="col-md-6">
+            <ng-container>
+              <app-mobile-verification [state] = "state" [mobileForm] = "cookRegistrationForm" (response) = "getEmailState($event)"></app-mobile-verification>
+            </ng-container>
+          </div>
+          <div *ngIf="state.photo" class="form-group col-md-6 br">
+            <label for="">{{state.url === 'cook' || state.url === 'edit-cook' || state.url === 'cookByDevotee' ? 'Cook Photo' : 'Devotee Photo'}}</label>
+            <app-profile-loader (valueChange)='profileImage($event)'></app-profile-loader>
+          </div>
+        </div>
+          
+        <div *ngIf="state.address" formGroupName ="address">
+          <div class="form-row" *ngIf="(state.url === 'devotee' || state.url === 'edit-devotee')">
+              <div class="form-group col-md-6">
+                <label for="">{{(state.url === 'devotee' || state.url === 'edit-devotee')?'Center House No' : Label.address.houseNo}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="houseNo">
+                <div *ngIf="(aform.houseNo.invalid && (aform.houseNo.dirty || aform.houseNo.touched)) || isSubmit" class="text-danger">
+                  <div *ngIf="aform.houseNo.errors?.required">
+                    {{RegistrationMessage.houseNo}}
+                  </div>
+                  <!-- <div *ngIf="name.errors.minlength">
+                    Name must be at least 4 characters long.
+                  </div>
+                  <div *ngIf="name.errors.maxlength">
+                    Name must not exceed 15 characters.
+                  </div> -->
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="">{{(state.url === 'devotee' || state.url === 'edit-devotee')?'Center Address' : Label.address.address1}}</label>
+                  <input type="text" class="form-control" id="" placeholder="" formControlName="address1">
+                  <div *ngIf="aform.address1.invalid && (aform.address1.dirty || aform.address1.touched)" class="text-danger">
+                    <div *ngIf="aform.address1.errors?.required">
+                      {{RegistrationMessage.address1}}
+                    </div>
+                    <!-- <div *ngIf="name.errors.minlength">
+                      Name must be at least 4 characters long.
+                    </div>
+                    <div *ngIf="name.errors.maxlength">
+                      Name must not exceed 15 characters.
+                    </div> -->
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="">{{Label.address.city}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="city">
+                <div *ngIf="aform.city.invalid && (aform.city.dirty || aform.city.touched)" class="text-danger">
+                  <div *ngIf="aform.city.errors?.required">
+                    {{RegistrationMessage.city}}
+                  </div>
+                  <!-- <div *ngIf="name.errors.minlength">
+                    Name must be at least 4 characters long.
+                  </div>
+                  <div *ngIf="name.errors.maxlength">
+                    Name must not exceed 15 characters.
+                  </div> -->
+                </div>
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="">{{Label.address.state}}</label>
+                  <select class="form-control form-control-sm" placeholder="state" formControlName="state" id="exampleFormControlSelect1">
+                    <option  value = "state" selected>state</option>
+                    <option *ngFor="let item of paramsConst.allStates" [value] = "item">{{item}}</option>
+                  </select>
+                  <!-- <input type="text" class="form-control" id="" placeholder="" formControlName="state"> -->
+                  <div *ngIf="aform.state.invalid && (aform.state.dirty || aform.state.touched)" class="text-danger">
+                    <div *ngIf="aform.state.errors?.required">
+                      {{RegistrationMessage.state}}
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="">{{Label.address.country}}</label>
+                <select  formControlName="country"  class="form-control" >
+                  <option value = "india" class="dropdown-item" href="#">India</option>
+                  <option value = "other" class="dropdown-item" href="#">Other</option>
+                </select>
+                <!-- <input type="text" class="form-control" id="" placeholder="" formControlName="country"> -->
+              </div>
+              <div class="form-group col-md-6">
+                  <label for="">{{Label.address.pincode}}</label>
+                  <input type="text" class="form-control" id="" placeholder="" formControlName="pincode">
+              </div>
+          </div>
+        </div>
+        
+        <div  class="form-row">
+            <div *ngIf="state.married" class="form-group col-md-6">
+              <label for="">{{Label.married}}</label>
+              <select formControlName="married"  class="form-control" >
+                <option value = "single" class="dropdown-item" href="#">Single</option>
+                <option value = "married" class="dropdown-item" href="#">Married</option>
+              </select>
+              <!-- <input type="text" class="form-control" id="" placeholder="" formControlName="married"> -->
+            </div>
+            <div *ngIf="state.age" class="form-group col-md-6">
+                <label for="">{{Label.age}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="age">
+            </div>
+        </div>
+        <div class="form-row">
+            <div *ngIf="state.specialist" class="form-group col-md-6">
+              <label for="">{{Label.specialist}}</label>
+              <input type="text" class="form-control" id="" placeholder="" formControlName="specialist">
+            </div>
+            <div *ngIf="state.salary" class="form-group required col-md-3">
+                <label for="">Current {{Label.salary}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="salary">
+                <div *ngIf="(form.salary.invalid && (form.salary.dirty || form.salary.touched)) || isSubmit" class="text-danger">
+                  <div *ngIf="form.salary.errors?.required">
+                    {{RegistrationMessage.salary}}
+                  </div>
+                  <div *ngIf="form.salary.errors?.pattern">
+                    {{RegistrationMessage.num_salary}}
+                  </div>
+                 <!--  <div *ngIf="name.errors.maxlength">
+                    Name must not exceed 15 characters.
+                  </div> -->
+                </div>
+            </div>
+            <div *ngIf="state.url === 'cook' || state.url === 'edit-cook' || state.url === 'cookByDevotee'" class="form-group col-md-3">
+              <label for="">Available</label>
+              <select  formControlName="availibility"  class="form-control" >
+                <option value = "true" class="dropdown-item">Yes</option>
+                <option value = "false" class="dropdown-item">No</option>
+                <!-- <option value = "on" class="dropdown-item">On</option> -->
+              </select>
+            </div>
+            <div *ngIf="state.centerName" class="form-group col-md-3">
+              <input *ngIf="form.availibility && form.availibility.value === 'on'" type="date" class="form-control"  formControlName="availibilityDate">
+            </div>
+        </div>
+        <div  class="form-row">
+          <div *ngIf="state.centerName" class="form-group col-md-6">
+            <label for="">{{Label.workExperience.centerName}}</label>
+            <input type="text" class="form-control" formControlName="centerName" id="" placeholder="">
+            <div *ngIf="(form.centerName.invalid && (form.centerName.dirty || form.centerName.touched))" class="text-danger">
+              <div *ngIf="form.centerName.errors?.required">
+                {{RegistrationMessage.centerName}}
+              </div>
+            </div>
+          </div>
+          <div *ngIf="state.PMName" class="form-group col-md-6">
+              <label for="">{{(state.url === 'devotee' || state.url === 'edit-devotee')?Label.workExperience.inchargeName : Label.workExperience.PMName}}</label>
+              <input type="text" class="form-control" formControlName="PMName" id="" placeholder="">
+          </div>
+      </div>
+        <div class="form-row">
+            <ng-template #cook>
+              <div *ngIf="state.study" class="form-group col-md-6">
+                <label for="">{{Label.study}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="study">
+              </div>
+            </ng-template>
+            <div *ngIf="(state.url === 'devotee' || state.url === 'edit-devotee'); else cook" class="form-group col-md-6">
+              <label for="">{{Label.study}}</label>
+              <select class="form-control" placeholder="student or working" formControlName="study">
+                <option  value = "student" selected>Student</option>
+                <option  value = "Working">Working</option>
+              </select>
+            </div>
+            <div *ngIf="state.description" class="form-group col-md-6">
+                <label for="">{{Label.description}}</label>
+                <input type="text" class="form-control" id="" placeholder="" formControlName="description">
+            </div>
+        </div>
+        <hr>
+        <div *ngIf="state.workExperience" class="work-experience">
+            <h2>{{Label.workExperience.workExperience}}</h2>
+            <div formArrayName="workExperience">
+              <div *ngFor="let comp of cookRegistrationForm.get('workExperience')['controls'];let i = index">
+                <div formGroupName="{{i}}">
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="">{{Label.workExperience.centerName}}</label>
+                        <input type="text" class="form-control" formControlName="centerName" id="" placeholder="">
+                        <div *ngIf="(wiform[i].controls.centerName.invalid && (wiform[i].controls.centerName.dirty || wiform[i].controls.centerName.touched))" class="text-danger">
+                          <div *ngIf="wiform[i].controls.centerName.errors?.required">
+                            {{RegistrationMessage.centerName}}
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group col-md-6">
+                          <label for="">Center {{Label.workExperience.address}}</label>
+                          <input type="text" class="form-control" formControlName="address" id="" placeholder="">
+                          <div *ngIf="form.name.invalid && (form.name.dirty || form.name.touched)" class="text-danger">
+                            <div *ngIf="form.name.errors?.required">
+                              {{RegistrationMessage.name}}
+                            </div>
+                              <div *ngIf="form.name.errors.minlength">
+                              Name must be at least 4 characters long.
+                            </div>
+                            <div *ngIf="form.name.errors.maxlength">
+                              Name must not exceed 15 characters.
+                            </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="form-row">
+                      <div class="form-group col-md-6">
+                        <label for="">No of years of cooking</label>
+                        <input type="text" class="form-control" formControlName="periodOfWork" id="" placeholder="">
+                        <div *ngIf="wiform[i].controls.periodOfWork.invalid && (wiform[i].controls.periodOfWork.dirty || wiform[i].controls.periodOfWork.touched)" class="text-danger">
+                          <div *ngIf="wiform[i].controls.periodOfWork.errors?.required">
+                            {{RegistrationMessage.periodOfWork}}
+                          </div>
+                          <div *ngIf="form.name.errors.minlength">
+                            Name must be at least 4 characters long.
+                          </div>
+                          <div *ngIf="form.name.errors.maxlength">
+                            Name must not exceed 15 characters.
+                          </div>
+                        </div>
+                      </div>
+                      <!-- <div class="form-group col-md-6">
+                          <label for="">{{Label.workExperience.comment}}</label>
+                          <input type="text" class="form-control" formControlName="comment" id="" placeholder="">
+                      </div> -->
+                  </div>
+                  <fieldset class="bd-2">
+                    <legend>{{Label.workExperience.verifiedBy}}</legend>
+                      <div class="form-row">
+                          <div class="form-group col-md-3">
+                              <label for="">Current {{Label.workExperience.PMName}}</label>
+                              <input type="text" class="form-control" formControlName="PMName" id="" placeholder="">
+                              <div *ngIf="wiform[i].controls.PMName.invalid && (wiform[i].controls.PMName.dirty || wiform[i].controls.PMName.touched)" class="text-danger">
+                                <div *ngIf="wiform[i].controls.PMName.errors?.required">
+                                  {{RegistrationMessage.PMName}}
+                                </div>
+                                
+                              </div>
+                          </div>
+                          <div class="form-group col-md-3">
+                              <label for="">Current {{Label.workExperience.PMMobile}}</label>
+                              <input type="text" class="form-control" formControlName="PMMobile" id="" placeholder="">
+                              <div *ngIf="wiform[i].controls.PMMobile.invalid && (wiform[i].controls.PMMobile.dirty || wiform[i].controls.PMMobile.touched)" class="text-danger">
+                                <div *ngIf="wiform[i].controls.PMMobile.errors?.required">
+                                  {{RegistrationMessage.PMMobile}}
+                                </div>
+                                
+                              </div>
+                          </div>
+                          <div class="form-group col-md-3">
+                            <label for="">{{Label.workExperience.KIName}}</label>
+                            <input type="text" class="form-control" id="" formControlName="KIName" placeholder="">
+                            <div *ngIf="wiform[i].controls.KIName.invalid && (wiform[i].controls.KIName.dirty || wiform[i].controls.KIName.touched)" class="text-danger">
+                              <div *ngIf="wiform[i].controls.KIName.errors?.required">
+                                {{RegistrationMessage.KIName}}
+                              </div>
+                              
+                            </div>
+                          </div>
+                          <div class="form-group col-md-3">
+                              <label for="">{{Label.workExperience.KIMobile}}</label>
+                              <input type="text" class="form-control" id="" formControlName="KIMobile" placeholder="">
+                              <div *ngIf="wiform[i].controls.KIMobile.invalid && (wiform[i].controls.KIMobile.dirty || wiform[i].controls.KIMobile.touched)" class="text-danger">
+                                <div *ngIf="wiform[i].controls.KIMobile.errors?.required">
+                                  {{RegistrationMessage.KIMobile}}
+                                </div>
+                                
+                              </div>
+                          </div>
+                          <div class="form-group col-md-3">
+                              <label for="">{{Label.workExperience.salary}}</label>
+                              <input type="text" class="form-control" id="" formControlName="salary" placeholder="">
+                              <div *ngIf="wiform[i].controls.salary.invalid && (wiform[i].controls.salary.dirty || wiform[i].controls.salary.touched)" class="text-danger">
+                                <div *ngIf="wiform[i].controls.salary.errors?.required">
+                                  {{RegistrationMessage.salary}}
+                                </div>
+                                
+                              </div>
+                          </div>
+                          
+                      </div>
+                  </fieldset>
+        
+                </div>
+              </div>
+            </div> 
+        </div>
+
+        <div class="m-2 text-center w-100 p-3">
+          <button *ngIf="state.url === 'edit' || state.url === 'edit-devotee' || state.url === 'edit-cook'; else add" (click) = "onSubmit(cookRegistrationForm.value)" class="btn btn-success btn-mg">Update
+            <i class="fa fa-circle-o-notch fa-spin" *ngIf="loading"></i>
+          </button>
+          <ng-template #add>
+            <button (click) = "onSubmit(cookRegistrationForm.value)" class="btn btn-success btn-mg">Sign Up
+              <i class="fa fa-circle-o-notch fa-spin" *ngIf="loading"></i>
+            </button>
+            <button (click) = "onReset()" class="btn btn-primary btn-danger">Reset</button>
+          </ng-template>
+        </div>
+    </form>
+</div>
